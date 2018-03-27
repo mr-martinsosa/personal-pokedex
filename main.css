@@ -1,0 +1,46 @@
+/*section{
+	display: flex;
+}*/
+
+h1{
+	text-align: center;
+}
+
+#flex-container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	width: 100%;
+}
+
+#avatar{
+	border: solid 3px black;
+}
+
+#random-title{
+	border: solid 3px black;
+	width: 450px;
+	text-align: center;
+	margin-left: 68px;
+}
+
+
+#pokemon-list{
+	display: flex;
+}
+
+#pokemon-one{
+	border: solid 3px black;
+	width: 200px;
+}
+
+#pokemon-two{
+	border: solid 3px black;
+	width: 200px;
+}
+
+#pokemon-three{
+	border: solid 3px black;
+	width: 200px;
+}
