@@ -16,6 +16,10 @@ h1{
 
 #avatar{
 	border: solid 3px black;
+	background-image: url("images/avatarbg.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+
 }
 
 #random-title{
