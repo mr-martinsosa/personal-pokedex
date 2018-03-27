@@ -1,6 +1,7 @@
-/*section{
-	display: flex;
-}*/
+section{
+	border: solid 3px grey;
+	background-color: black;
+}
 
 body{
 	font-family: 'Arbutus', cursive;
@@ -19,7 +20,7 @@ h1{
 }
 
 #avatar{
-	border: solid 3px black;
+	border: solid 3px white;
 	background-image: url("images/avatarbg.jpeg");
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -27,10 +28,11 @@ h1{
 }
 
 #random-title{
-	border: solid 3px black;
+	border: solid 3px white;
 	width: 450px;
 	text-align: center;
-	margin-left: 68px;
+	margin-left: 64px;
+	color: white;
 }
 
 
@@ -39,16 +41,19 @@ h1{
 }
 
 #pokemon-one{
-	border: solid 3px black;
+	border: solid 3px white;
 	width: 200px;
+	color: white;
 }
 
 #pokemon-two{
-	border: solid 3px black;
+	border: solid 3px white;
 	width: 200px;
+	color: white;
 }
 
 #pokemon-three{
-	border: solid 3px black;
+	border: solid 3px white;
 	width: 200px;
+	color: white;
 }

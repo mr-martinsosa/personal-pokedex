@@ -20,3 +20,34 @@ class Sause{
 		// return pokemon retrieved from ajax
 	}
 }
+
+let title = document.querySelector("#random-title")
+listOfTitles = [
+	"Lorekeeper",
+	"Pokemon Trainer",
+	"Leader",
+	"Elite Four",
+	"Champion",
+	"Ace Trainer",
+	"Dragon Tamer",
+	"Black Belt",
+	"Rival",
+	"Youngster",
+	"Swimmer",
+	"Tamer",
+	"Cook",
+	"Captain",
+	"Fisherman",
+	"World Champion",
+	"Pikachu Fan",
+	"Arcade Star",
+	"Elder",
+	"Chaser",
+	"Rogue",
+	"Worker",
+	"Supertrainer",
+	"Teacher",
+	"Lone Wolf"
+]
+
+title.innerText = listOfTitles[Math.floor(Math.random() * Math.floor(listOfTitles.length) )] + " Sause"
