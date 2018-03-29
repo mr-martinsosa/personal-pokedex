@@ -3,18 +3,18 @@ class Pokemon{
 		this.dex_num = dex_num
 
 		axios.get(`https://pokeapi.co/api/v2/pokemon-form/${this.dex_num}/`)
-		.then((response) => 
-			let data = response.data
-			this.name = data.forms[0].name
-			this.hp = data.stats[5].base_stat
-			this.attack = data.stats[4].base_stat
-			this.defense = data.stats[3].base_stat
+		.then((response) => {
+			let info = response.data
+			this.name = info.forms[0].name
+			this.hp = info.stats[5].base_stat
+			this.attack = info.stats[4].base_stat
+			this.defense = info.stats[3].base_stat
 				
-			for(let i = 0; i < data.abilities i++){
+			for(let i = 0; i < data.abilities; i++){
 				this.abilities.push(data.abilities[i].ability.name)
 			}
 
-			this.sprite = data.sprites.front_default
+			this.sprite = info.sprites.front_default
 		})
 	}
 }
@@ -70,3 +70,19 @@ listOfTitles = [
 ]
 
 title.innerText = listOfTitles[Math.floor(Math.random() * Math.floor(listOfTitles.length) )] + " Sause"
+
+let pokemonOne = document.querySelector("#pokemon-one-img")
+let pokemonTwo = document.querySelector("#pokemon-two-img")
+let pokemonThree = document.querySelector("#pokemon-three-img")
+
+let dragonite = new Pokemon(149)
+let porygonZ = new Pokemon(474)
+let scrafty = new Pokemon(560)
+
+pokemonOne.src = dragonite.sprite
+pokemonTwo.src = porygonZ.sprite
+pokemonThree.src = scrafty.sprite
+
+let party = [dragonite, porygonZ, scrafty]
+
+let sause = new Sause(party)
