@@ -1,10 +1,22 @@
+/*@font-face {
+	font-family: "Pokemon GB";
+	src: url("css/fonts/Harabara.eot");
+	src: 
+	url("css/fonts/Harabara.woff") format("woff"),
+	url("css/fonts/Harabara.otf") format("opentype"),
+	url("css/fonts/Harabara.svg#filename") format("svg");
+}*/
+
 section{
-	border: solid 3px grey;
+	border: solid 3px transparent;
+	padding: 15px;
+	border-image: url("images/border.png") 30 round;
 	background-color: black;
 }
 
 body{
 	font-family: 'Arbutus', cursive;
+	/*font-family: 'Pokemon GB'*/
 	background-image: url("images/background.png");
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -13,6 +25,7 @@ body{
 
 h1{
 	text-align: center;
+	
 }
 
 #flex-container{
@@ -35,7 +48,7 @@ h1{
 	border: solid 3px white;
 	width: 450px;
 	text-align: center;
-	margin-left: 64px;
+	margin-left: 57px;
 	color: white;
 }
 
