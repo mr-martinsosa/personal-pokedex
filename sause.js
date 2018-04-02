@@ -1,5 +1,5 @@
 
-let check = 0; //set counter for base intialization
+let check = 0 //set counter for base intialization
 
 class Pokemon{
 	constructor(dex_num){
@@ -10,13 +10,13 @@ class Pokemon{
 			check++ //increment on creation
 
 			let info = response.data
-			this["name"] = (info.forms[0].name).charAt(0).toUpperCase() + (info.forms[0].name).slice(1)
+			this["name"] = (info.forms[0].name).charAt(0).toUpperCase() + (info.forms[0].name).slice(1) //set first letter upper
 			this["hp"] = info.stats[5].base_stat
 			this["attack"] = info.stats[4].base_stat
 			this["defense"] = info.stats[3].base_stat
 			this["abilities"] = []
 			for(let i = 0; i < info.abilities.length; i++){
-				this["abilities"].push( (info.abilities[i].ability.name).charAt(0).toUpperCase() + (info.abilities[i].ability.name).slice(1) )
+				this["abilities"].push( (info.abilities[i].ability.name).charAt(0).toUpperCase() + (info.abilities[i].ability.name).slice(1) ) //set first letter upper
 			}
 
 			this["sprite"] = info.sprites.front_default
@@ -61,7 +61,7 @@ let pokemonThreeImg = document.getElementById("pokemon-three-img")
 
 function checkMe(){
 	if (check === 3 ){ //if called 3 times, all the pokemon have been created so do everythingElse
-		everythingElse();
+		everythingElse()
 	}
 }
 
