@@ -1,22 +1,35 @@
+
+let check = [];
+
 class Pokemon{
 	constructor(dex_num){
 		this.dex_num = dex_num
 
 		axios.get(`https://pokeapi.co/api/v2/pokemon/${this.dex_num}/`)
 		.then((response) => {
+			check.push(true);
+
 			let info = response.data
-			this.name = info.forms[0].name
-			this.hp = info.stats[5].base_stat
-			this.attack = info.stats[4].base_stat
-			this.defense = info.stats[3].base_stat
+			this["name"] = info.forms[0].name
+			this["hp"] = info.stats[5].base_stat
+			this["attack"] = info.stats[4].base_stat
+			this["defense"] = info.stats[3].base_stat
 				
 			for(let i = 0; i < info.abilities; i++){
 				this.abilities.push(info.abilities[i].ability.name)
+				
+
 			}
 
-			this.sprite = info.sprites.front_default
-		})
+			this["sprite"] = info.sprites.front_default
+			// console.log(check);
+			
+			// console.log(dragonite);
+			
+
+		checkMe();})
 	}
+
 }
 
 class Sause{
@@ -37,10 +50,31 @@ class Sause{
 				return pokemon[i]
 			}
 		}
+	
 	}
 }
 
+let dragonite = new Pokemon(149)
+let porygonZ = new Pokemon(474)
+let scrafty = new Pokemon(560)
+
+let pokemonOneImg = document.getElementById("pokemon-one-img")
+let pokemonTwoImg = document.getElementById("pokemon-two-img")
+let pokemonThreeImg = document.getElementById("pokemon-three-img")
+
+
+
+function checkMe(){
+	if (check.length === 3){
+		everythingElse();
+	}
+}
+
+
+function everythingElse(){
+
 let title = document.querySelector("#random-title")
+
 listOfTitles = [
 	"Lorekeeper",
 	"Pokemon Trainer",
@@ -71,16 +105,6 @@ listOfTitles = [
 
 title.innerText = listOfTitles[Math.floor(Math.random() * Math.floor(listOfTitles.length) )] + " Sause"
 
-let pokemonOneImg = document.querySelector("#pokemon-one-img")
-let pokemonTwoImg = document.querySelector("#pokemon-two-img")
-let pokemonThreeImg = document.querySelector("#pokemon-three-img")
-
-let dragonite = new Pokemon(149)
-let porygonZ = new Pokemon(474)
-let scrafty = new Pokemon(560)
-
-console.log(dragonite)
-console.log(dragonite[name])
 
 pokemonOneImg.src = dragonite.sprite
 pokemonTwoImg.src = porygonZ.sprite
@@ -117,6 +141,7 @@ let party = [dragonite, porygonZ, scrafty]
 
 let sause = new Sause(party)
 
+}
 // for(let i = 0; i < sause.pokemon.length; i++){
 // 	let pokemonInfo = document.querySelector(`#pokemon-${i}-info`)
 // 	pokemonInfo.innerHTML = `${sause.pokemon[i].name}: <br/>
