@@ -7,14 +7,14 @@
 	<title>Sause's Pokedex</title>
 </head>
 <body>
-	<h1> Sause's Pokedex </h1>
+	<h3> Sause's Pokedex </h3>
 	<section>
 
-		<div id = "flex-container">
+		<div id = "flex-container" class = "row">
 			
-			<img id = "avatar" src = "images/trainer.png" \>
+			<img class = "col 9	responsive-img" id = "avatar" src = "images/trainer.png" \>
 			
-			<div id = "pokemon-list">
+			<div class = "col 3" id = "pokemon-list">
 			
 				<div id = "pokemon-one">
 					<img id = "pokemon-one-img" class = "loading" src = "images/loading.gif" \>
@@ -35,7 +35,9 @@
 
 		</div>
 		
-		<p id = "random-title"> <img class = "loading" src = "images/loading2.gif"> </p>
+		<div class = "row">
+			<p id = "random-title"> <img class = "loading" src = "images/loading2.gif"> </p>
+		</div>
 
 	</section>
 
@@ -55,7 +57,7 @@
 		</p>
 	</footer>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 	<script type="text/javascript" src="sause.js"></script>
 </body>
 </html>
