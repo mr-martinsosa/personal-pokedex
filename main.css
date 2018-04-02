@@ -78,18 +78,21 @@ h3{
 }
 
 #pokemon-one-img{
+	cursor: pointer;
 	display: block;
 	margin-left: auto;
     margin-right: auto;
 }
 
 #pokemon-two-img{
+	cursor: pointer;
 	display: block;
 	margin-left: auto;
     margin-right: auto;
 }
 
 #pokemon-three-img{
+	cursor: pointer;
 	display: block;
 	margin-left: auto;
     margin-right: auto;

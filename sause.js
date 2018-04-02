@@ -1,5 +1,5 @@
 
-let check = 0 //set counter for base intialization
+let check = 0 //set counter for base intialization to use as a semaphore
 
 class Pokemon{
 	constructor(dex_num){
@@ -104,6 +104,25 @@ function everythingElse(){
 	pokemonOneImg.src = dragonite.sprite
 	pokemonTwoImg.src = porygonZ.sprite
 	pokemonThreeImg.src = scrafty.sprite
+
+	pokemonOneImg.addEventListener("click", (event) => {
+		let sound = new Audio()
+		sound.src = "sound/dragonite.mp3"
+		sound.play()
+	})
+
+	pokemonTwoImg.addEventListener("click", (event) => {
+		let sound = new Audio()
+		sound.src = "sound/porygonz.mp3"
+		sound.play()
+	})
+
+	pokemonThreeImg.addEventListener("click", (event) => {
+		let sound = new Audio()
+		sound.src = "sound/scrafty.mp3"
+		sound.play()
+	})
+
 
 	console.log(dragonite)
 	// let pokemonInfo = document.querySelector("#pokemon-one-info")
