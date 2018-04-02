@@ -106,3 +106,16 @@ h3{
 #pokemon-three-info{
 	text-align: center;
 }
+
+.btn{
+  background-color: white;
+  color: black;
+}
+
+.btn:hover{ 
+  background-color: #42f456;
+}
+
+.btn:focus{ 
+  background-color: #42f456;
+}

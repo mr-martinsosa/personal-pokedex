@@ -132,6 +132,13 @@ function everythingElse(){
 								<u>Abilities</u>: <br/> ${scrafty.abilities[0]} <br/> ${scrafty.abilities[1]} <br/>
 								`
 
+	let elem = document.querySelector('.modal') //grab modal
+  	elem.addEventListener("click", (event) => {
+  		let instance = M.Modal.init(elem, options) //initialize modal
+  		instance = M.Modal.getInstance(elem)
+  		instance.open()
+  	})
+	
 	let party = [dragonite, porygonZ, scrafty]
 
 	let sause = new Sause(party)
