@@ -98,7 +98,11 @@ function everythingElse(){
 		"Lone Wolf"
 	]
 
-	title.innerText = listOfTitles[Math.floor(Math.random() * Math.floor(listOfTitles.length) )] + " Sause"
+	title.innerText = `${listOfTitles[Math.floor(Math.random() * Math.floor(listOfTitles.length) )]} Sause
+						Age: ${Math.floor(Math.random() * Math.floor(27) )}
+						Hometown: New York
+						Journey Started on: March 5th, 2018
+						`
 
 
 	pokemonOneImg.src = dragonite.sprite

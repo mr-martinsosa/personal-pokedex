@@ -25,13 +25,13 @@ h3{
 	size: 30px;
 }
 
-#flex-container{
+/*#flex-container{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	width: 100%;
-}
+}*/
 
 .loading{
 	width: 100px;
@@ -49,15 +49,14 @@ h3{
 	border: solid 3px white;
 	width: 450px;
 	text-align: center;
-	margin-left: 57px;
 	color: white;
 
 }
 
 
-#pokemon-list{
+/*#pokemon-list{
 	display: flex;
-}
+}*/
 
 #pokemon-one{
 	border: solid 3px white;

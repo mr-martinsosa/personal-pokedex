@@ -4,24 +4,65 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Arbutus" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<title>Sause's Pokedex</title>
+	<title>Sause's Trainer Card</title>
 </head>
 <body>
-	<h3> Sause's Pokedex </h3>
-	<section>
+	<h3> Sause's Trainer Card </h3>
 
-		<div id = "flex-container" class = "row">
+
+	<section class = "container col row">				
+							
+		<div class = "col 2 row">
 			
-			<img class = "col 9	" id = "avatar" src = "images/trainer.png" \>
+			<img id = "avatar" src = "images/trainer.png" \>
+
+			<div class = "col 4">
+				<p id = "random-title"> <img class = "loading" src = "images/loading2.gif"> Loading Trainer...</p>
+			</div>
 			
-			<div class = "col 3" id = "pokemon-list">
-				
+			<div class = "row" id = "pokemon-list">
 
-				<div id = "pokemon-one">
-				
-					<img id = "pokemon-one-img" class = "loading" src = "images/loading.gif" \>
+				<div class="col s12 m4">
+					      <div class="card flow-text">
+					        <div id="pokemon-one" class="card-image" style="background-color: transparent;">
+					          <img id = "pokemon-one-img" class = "loading" src = "images/loading.gif" \>
+					          <span class="card-title"></span>
+					        </div>
+					        <div class="card-content" style="overflow: hidden">
+					          <p id = "pokemon-one-info" style="color: black">Loading Dragonite</p>
 
-						<p id = "pokemon-one-info">Loading Dragonite</p>
+					        </div>
+					      </div>
+					    </div>
+		
+		<div class="col s12 m4">
+					      <div class="card flow-text">
+					        <div id = "pokemon-two" class="card-image" style="background-color: transparent;">
+					          <img id = "pokemon-two-img" class = "loading" src = "images/loading.gif" \>
+					          <span class="card-title"></span>
+					        </div>
+					        <div class="card-content" style="overflow: hidden">
+					          <p id = "pokemon-two-info">Loading Porygon-Z</p>
+					        </div>
+					      </div>
+					    </div>
+		
+		<div class="col s12 m4">
+					      <div class="card flow-text">
+					        <div id = "pokemon-three" class="card-image" style="background-color: transparent;">
+					          <img id = "pokemon-two-img" class = "loading" src = "images/loading.gif" \>
+					          <span class="card-title"></span>
+					        </div>
+					        <div class="card-content" style="overflow: hidden">
+					          <p id = "pokemon-three-info">Loading Scrafty </p>
+					        </div>
+					      </div>
+					    </div>
+				
+					
+
+						
+						
 
 						 <!-- Modal Trigger -->
 				  
@@ -40,10 +81,7 @@
 					
 					</div>
 					
-				<div id = "pokemon-two">
-					<img id = "pokemon-two-img" class = "loading" src = "images/loading.gif" \>
-
-					<p id = "pokemon-two-info">Loading Porygon-Z</p>
+				
 
 					<!-- Modal Trigger -->
 					  <a class="waves-effect waves-light btn modal-trigger" href="#pokemon-two-modal">More Details</a>
@@ -61,11 +99,7 @@
 				
 				</div>
 
-				<div id = "pokemon-three">
-					<img id = "pokemon-three-img" class = "loading" src = "images/loading.gif" \>
-					
-					<p id = "pokemon-three-info">Loading Scrafty</p>
-					
+				
 						 <!-- Modal Trigger -->
 					  <a class="waves-effect waves-light btn modal-trigger" href="#pokemon-three-modal">More Details</a>
 
@@ -86,9 +120,7 @@
 
 		</div>
 		
-		<div class = "row">
-			<p id = "random-title"> <img class = "loading" src = "images/loading2.gif"> </p>
-		</div>
+		
 
 	</section>
 
