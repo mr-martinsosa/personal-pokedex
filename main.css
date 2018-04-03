@@ -58,20 +58,21 @@ h3{
 	display: flex;
 }*/
 
+
 #pokemon-one{
-	border: solid 3px white;
+	/*border: solid 3px white;*/
 	width: 200px;
 	color: white;
 }
 
 #pokemon-two{
-	border: solid 3px white;
+	/*border: solid 3px white;*/
 	width: 200px;
 	color: white;
 }
 
 #pokemon-three{
-	border: solid 3px white;
+	/*border: solid 3px white;*/
 	width: 200px;
 	color: white;
 }
