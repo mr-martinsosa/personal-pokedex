@@ -1,72 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Arbutus" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="main.css">
-	<title>Sause's Trainer Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Arbutus" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Sause's Trainer Card</title>
 </head>
+
 <body>
-	<h3> Sause's Trainer Card </h3>
-
-
-	<section class = "container col row">				
-							
-		<div class = "col 2 row">
-			
-			<img id = "avatar" src = "images/trainer.png" \>
-
-			<div class = "col 4">
-				<p id = "random-title"> <img class = "loading" src = "images/loading2.gif"> Loading Trainer...</p>
-			</div>
-			
-			<div class = "row" id = "pokemon-list">
-
-				<div class="col s12 m4">
-					      <div class="card transparent flow-text">
-					        <div id="pokemon-one" class="card-image" style="background-color: transparent;">
-					          <img id = "pokemon-one-img" class = "loading" src = "images/loading.gif" \>
-					          <span class="card-title"></span>
-					        </div>
-					        <div class="card-content" style="overflow: hidden">
-					          <p id = "pokemon-one-info">Loading Dragonite</p>
-
-					        </div>
-					      </div>
-					    </div>
-		
-		<div class="col s12 m4">
-					      <div class="card transparent flow-text">
-					        <div id = "pokemon-two" class="card-image" style="background-color: transparent;">
-					          <img id = "pokemon-two-img" class = "loading" src = "images/loading.gif" \>
-					          <span class="card-title"></span>
-					        </div>
-					        <div class="card-content" style="overflow: hidden">
-					          <p id = "pokemon-two-info">Loading Porygon-Z</p>
-					        </div>
-					      </div>
-					    </div>
-		
-		<div class="col s12 m4">
-					      <div class="card  transparent flow-text center-align">
-					        <div id = "pokemon-three" class="card-image" style="background-color: transparent;">
-					          <img id = "pokemon-three-img" class = "loading" src = "images/loading.gif" \>
-					          <span class="card-title"></span>
-					        </div>
-					        <div class="card-content" style="overflow: hidden">
-					          <p id = "pokemon-three-info">Loading <br/> Scrafty </p>
-					        </div>
-					      </div>
-					    </div>
-				</div>
-			</div>
-	</section>
-
-	<footer>
-			<!-- Credit for avatar given to: https://polloron.deviantart.com/art/Lorekeeper-Zinnia-494624683 -->
-	</footer>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-	<script type="text/javascript" src="sause.js"></script>
+    <h3> Sause's Trainer Card </h3>
+    <section class="container col row">
+        <div class="col 2 row">
+            <img id="avatar" src="images/trainer.png" \>
+            <div class="col 4">
+                <p id="random-title"> <img class="loading" src="images/loading2.gif"> Loading Trainer...</p>
+            </div>
+            <div class="row" id="pokemon-list">
+                <div class="col s12 m4">
+                    <div class="card transparent flow-text">
+                        <div id="pokemon-one" class="card-image">
+                            <img id="pokemon-one-img" class="loading" src="images/loading.gif" \>
+                            <span class="card-title"></span>
+                        </div>
+                        <div class="card-content" style="overflow: hidden">
+                            <p id="pokemon-one-info">Loading Dragonite</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card transparent flow-text">
+                        <div id="pokemon-two" class="card-image">
+                            <img id="pokemon-two-img" class="loading" src="images/loading.gif" \>
+                            <span class="card-title"></span>
+                        </div>
+                        <div class="card-content" style="overflow: hidden">
+                            <p id="pokemon-two-info">Loading Porygon-Z</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card  transparent flow-text center-align">
+                        <div id="pokemon-three" class="card-image">
+                            <img id="pokemon-three-img" class="loading" src="images/loading.gif" \>
+                            <span class="card-title"></span>
+                        </div>
+                        <div class="card-content" style="overflow: hidden">
+                            <p id="pokemon-three-info">Loading
+                                <br/> Scrafty </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <!-- Credit for avatar given to: https://polloron.deviantart.com/art/Lorekeeper-Zinnia-494624683 -->
+    </footer>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript" src="sause.js"></script>
 </body>
+
 </html>
