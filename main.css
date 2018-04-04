@@ -1,30 +1,24 @@
 @font-face {
-    font-family: "Pokemon GB";
-    src: url("fonts/pokemon-gb.ttf");
-}
-
+  font-family: "Pokemon GB";
+  src: url("fonts/pokemon-gb.ttf"); }
 section {
-    border: solid 3px transparent;
-    /*padding: 29px;*/
-    border-image: url("images/border.png") 30 round;
-    background-color: black;
-}
+  border: solid 3px transparent;
+  /*padding: 29px;*/
+  border-image: url("images/border.png") 30 round;
+  background-color: black; }
 
 body {
-    font-family: 'Arbutus', cursive;
-    /*font-family: 'Pokemon GB', sans-serif;*/
-    background-image: url("images/background.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-}
+  font-family: 'Arbutus', cursive;
+  /*font-family: 'Pokemon GB', sans-serif;*/
+  background-image: url("images/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white; }
 
 h3 {
-    text-align: center;
-    font-family: 'Pokemon GB', sans-serif;
-    size: 30px;
-}
-
+  text-align: center;
+  font-family: 'Pokemon GB', sans-serif;
+  size: 30px; }
 
 /*#flex-container{
 	display: flex;
@@ -33,99 +27,80 @@ h3 {
 	justify-content: space-around;
 	width: 100%;
 }*/
-
 .loading {
-    width: 100px;
-}
+  width: 100px; }
 
 #avatar {
-    border: solid 3px white;
-    background-image: url("images/avatarbg.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+  border: solid 3px white;
+  background-image: url("images/avatarbg.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat; }
 
 #random-title {
-    border: solid 3px white;
-    width: 450px;
-    text-align: center;
-    color: white;
-}
-
-
+  border: solid 3px white;
+  width: 450px;
+  text-align: center;
+  color: white; }
 
 /*#pokemon-list{
 	display: flex;
 }*/
-
 #pokemon-one {
-    /*border: solid 3px white;*/
-    width: 200px;
-    color: white;
-}
+  /*border: solid 3px white;*/
+  width: 200px;
+  color: white; }
 
 #pokemon-two {
-    /*border: solid 3px white;*/
-    width: 200px;
-    color: white;
-}
+  /*border: solid 3px white;*/
+  width: 200px;
+  color: white; }
 
 #pokemon-three {
-    /*border: solid 3px white;*/
-    width: 200px;
-    color: white;
-}
+  /*border: solid 3px white;*/
+  width: 200px;
+  color: white; }
 
 #pokemon-one-img {
-    cursor: pointer;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 
 #pokemon-two-img {
-    cursor: pointer;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 
 #pokemon-three-img {
-    cursor: pointer;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 
 #pokemon-one-info {
-    text-align: center;
-}
+  text-align: center; }
 
 #pokemon-two-info {
-    text-align: center;
-}
+  text-align: center; }
 
 #pokemon-three-info {
-    text-align: center;
-}
+  text-align: center; }
 
 .card-image {
-    background-color: transparent;
-}
+  background-color: transparent; }
 
-.card-content{
-    overflow: hidden;
-}
+.card-content {
+  overflow: hidden; }
 
 .btn {
-    background-color: white;
-    color: black;
-}
+  background-color: white;
+  color: black; }
 
 .btn:hover {
-    background-color: #42f456;
-}
+  background-color: #42f456; }
 
 .btn:focus {
-    background-color: #42f456;
-}
+  background-color: #42f456; }
+
+/*# sourceMappingURL=main.css.map */
