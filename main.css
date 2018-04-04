@@ -113,6 +113,10 @@ h3 {
     background-color: transparent;
 }
 
+.card-content{
+    overflow: hidden;
+}
+
 .btn {
     background-color: white;
     color: black;
