@@ -42,6 +42,7 @@ class Pokemon {
         		for(let i = 0; i < urls.length; i++){
         			if(grabFour === 4){
         				grabFour = 0
+        				urls.length = 0
         				break
         			}
         			++grabFour
@@ -71,7 +72,7 @@ class Pokemon {
 		    axios.get(grabRandom)
 		        .then((response) => {
 		            let info = response.data
-		            urls.length = 0
+		            
 
 		            checkMoves++
 		            console.log(checkMoves)
@@ -80,12 +81,11 @@ class Pokemon {
 		            		this.moves.push(move)
 		            }
 		            for (let i = 0; i < this.moves.length; i++) {
-		            	// console.log(this.moves[i].name)
+		            	console.log(this.moves[i].name)
+		            	console.log(info.names[2].name)
 			                if (this.moves[i].name === info.names[2].name) { //if move already exists, remove the move
 			                    if(randomIndex !== -1){
-			                    	console.log(urls)
 			                    	urls.splice(randomIndex, 1) //splice the list based on index and return it without the move
-			                    	console.log(urls)
 			                    }
 			                } else if (this.moves.length < 4) {
 			                    // addMove(pokemon) //otherwise call function again and let RNG give us a new 
@@ -356,51 +356,107 @@ function main() {
             // for (let j in sause.pokemon[i].moves) { //didnt work with a for loop but for in did ??????
             	// console.log(sause.pokemon[i].moves[j].name)
                 pokemonOneBonus.innerHTML = `
-							<u>${sause.pokemon[i].moves[0].name}: </u> <br/>
-							<u>Priority: </u> ${sause.pokemon[i].moves[0].priority} <br/>
-							<u>Power: </u> ${sause.pokemon[i].moves[0].power} <br/>
-							<u>Accuracy: </u> ${sause.pokemon[i].moves[0].accuracy} <br/>
-							<u>PP: </u> ${sause.pokemon[i].moves[0].pp} <br/>
+							<u>${sause.pokemon[i].moves[0].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[0].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[0].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[0].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[0].pp} <br/> <br/>
+
+							<u>${sause.pokemon[i].moves[1].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[1].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[1].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[1].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[1].pp} <br/><br/>
+
+							<u>${sause.pokemon[i].moves[2].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[2].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[2].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[2].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[2].pp} <br/><br/>
+
+							<u>${sause.pokemon[i].moves[3].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[3].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[3].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[3].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[3].pp} <br/><br/>
 							`
+
+
             // }
         }
         else if (i === 1) {
             pokemonTwoInfo.innerHTML = `
-							<u>${sause.pokemon[i].name}:</u> <br/>
+							<u>${sause.pokemon[i].name}</u>: <br/>
 								<u>HP</u>: ${sause.pokemon[i].hp} <br/>
 								<u>Attack</u>: ${sause.pokemon[i].attack} <br/>
 								<u>Defense</u>: ${sause.pokemon[i].defense} <br/>
 								<u>Abilities</u>: <br/> ${sause.pokemon[i].abilities[0]} <br/> ${sause.pokemon[i].abilities[1]} <br/>
 								`
-            for (let j in sause.pokemon[i].moves) {
+            // for (let j in sause.pokemon[i].moves) {
 
                 pokemonTwoBonus.innerHTML = `
-							<u>${sause.pokemon[i].moves[j].name}: </u> <br/>
-							<u>Priority: </u> ${sause.pokemon[i].moves[0].priority} <br/>
-							<u>Power: </u> ${sause.pokemon[i].moves[0].power} <br/>
-							<u>Accuracy: </u> ${sause.pokemon[i].moves[0].accuracy} <br/>
-							<u>PP: </u> ${sause.pokemon[i].moves[0].pp} <br/>
-								`
-            }
+							<u>${sause.pokemon[i].moves[0].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[0].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[0].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[0].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[0].pp} <br/><br/>
+
+							<u>${sause.pokemon[i].moves[1].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[1].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[1].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[1].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[1].pp} <br/><br/>
+
+							<u>${sause.pokemon[i].moves[2].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[2].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[2].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[2].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[2].pp} <br/><br/>
+
+							<u>${sause.pokemon[i].moves[3].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[3].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[3].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[3].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[3].pp} <br/><br/>
+							`
+            // }
         }
         else if (i === 2) {
             pokemonThreeInfo.innerHTML = `
-							<u>${sause.pokemon[i].name}:</u> <br/>
+							<u>${sause.pokemon[i].name}</u>: <br/>
 								<u>HP</u>: ${sause.pokemon[i].hp} <br/>
 								<u>Attack</u>: ${sause.pokemon[i].attack} <br/>
 								<u>Defense</u>: ${sause.pokemon[i].defense} <br/>
 								<u>Abilities</u>: <br/> ${sause.pokemon[i].abilities[0]} <br/> ${sause.pokemon[i].abilities[1]} <br/>
 								`
-            for (let j in sause.pokemon[i].moves) {
+            // for (let j in sause.pokemon[i].moves) {
             	console.log(sause.pokemon[i])
                 pokemonThreeBonus.innerHTML = `
-							<u>${sause.pokemon[i].move[0].name}: </u> <br/>
-							<u>Priority: </u>${sause.pokemon[i].moves[0].priority} <br/>
-							<u>Power: </u>${sause.pokemon[i].moves[0].power} <br/>
-							<u>Accuracy: </u>${sause.pokemon[i].moves[0].accuracy} <br/>
-							<u>PP: </u>${sause.pokemon[i].moves[0].pp} <br/>
+							<u>${sause.pokemon[i].moves[0].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[0].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[0].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[0].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[0].pp} <br/><br/>
+
+							<u>${sause.pokemon[i].moves[1].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[1].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[1].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[1].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[1].pp} <br/><br/>
+
+							<u>${sause.pokemon[i].moves[2].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[2].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[2].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[2].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[2].pp} <br/><br/>
+
+							<u>${sause.pokemon[i].moves[3].name}</u>:  <br/>
+							<u>Priority</u>:  ${sause.pokemon[i].moves[3].priority} <br/>
+							<u>Power</u>:  ${sause.pokemon[i].moves[3].power} <br/>
+							<u>Accuracy</u>:  ${sause.pokemon[i].moves[3].accuracy}% <br/>
+							<u>PP</u>:  ${sause.pokemon[i].moves[3].pp} <br/><br/>
 							`
-            }
+            // }
         }
 
     }
