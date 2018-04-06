@@ -1,8 +1,9 @@
 let check = 0 //set counter for base intialization to use as a semaphore
 let checkMoves = 0 //set counter for base initialization to use as a semaphore
 let urls = [] //initialize empty list to store urls of move data
-let randomMove = "" //store a random move
+let randomMove = [] //store random moves
 let randomIndex = Math.floor(Math.random() * Math.floor(urls.length)) //store a random number to use as an index
+let grabFour = 0 //counter to count 4 moves
 
 class Moves {
     constructor(name, priority, power, accuracy, pp) {
@@ -35,48 +36,58 @@ class Pokemon {
                 this["moves"] = []
                 this["shiny"] = info.sprites.front_shiny
 
-                this["randomMove"] = ""
+                for (let i = 0; i < info.moves.length; i++) {
+        				urls.push(info.moves[i].move.url) //push all the moves a pokemon can learn into array
+        		}
+        		for(let i = 0; i < urls.length; i++){
+        			if(grabFour === 4){
+        				grabFour = 0
+        				break
+        			}
+        			++grabFour
+        			// console.log(urls[Math.floor(Math.random() * Math.floor(urls.length))])
+        			randomMove.push(urls[Math.floor(Math.random() * Math.floor(urls.length))])
+        		}
+        		urls.length = 0
+                
                 checkCreated()
             }) //call checkCreated() on new object call
         }
 
-        getRandomMove() {
-        	axios.get(`https://pokeapi.co/api/v2/pokemon/${this.dex_num}/`) 
-        		.then((response) => {
-        			checkMoves++
-        			let info = response.data
+        // getRandomMove() {
+        // 	axios.get(`https://pokeapi.co/api/v2/pokemon/${this.dex_num}/`) 
+        // 		.then((response) => {
+        // 			checkMoves++
+        // 			let info = response.data
 
-        			for (let i = 0; i < info.moves.length; i++) {
-        				urls.push(info.moves[i].move.url) //push all the moves a pokemon can learn into array
-        			}
-        			this.randomMove = urls[randomIndex]
-        			checkCreatedMoves() //call after all moves are recieved
-        		})
-        	}
+        			
+        // 			checkCreatedMoves() //call after all moves are recieved
+        // 		})
+        // 	}
 
         addMove(){
 		     //randomize move
-		    axios.get(this.randomMove)
+		    let grabRandom = randomMove[Math.floor(Math.random() * Math.floor(randomMove.length))]
+		    axios.get(grabRandom)
 		        .then((response) => {
 		            let info = response.data
 
 		            let move = new Moves(info.names[2].name, info.priority, info.power, info.accuracy, info.pp)
-		            console.log(move)
-		            if(pokemon.moves.length === 0){ //if moves list is empty push
-		            		pokemon.moves.push(move)
+		            if(this.moves.length === 0){ //if moves list is empty push
+		            		this.moves.push(move)
 		            }
 		            for (let i = 0; i < this.moves.length; i++) {
-		            	if(this.moves.length > 0){
+		            	// console.log(this.moves[i].name)
 			                if (this.moves[i].name === info.names[2].name) { //if move already exists, remove the move
 			                    if(randomIndex !== -1){
 			                    	urls.splice(randomIndex, 1) //splice the list based on index and return it without the move
 			                    }
-			                } else {
+			                } else if (this.moves.length < 4) {
 			                    // addMove(pokemon) //otherwise call function again and let RNG give us a new 
 			                    this.moves.push(move) //otherwise push the move to the array
 			                }
-			            }
 		            }
+		            // console.log(this)
 		        })
 	}
 }
@@ -122,42 +133,43 @@ function checkCreated() {
     }
 }
 
-function checkCreatedMoves() {
-    if (checkCreated === 12) { //if called 12 times, all the moves have been created so add them.
+// function checkCreatedMoves() {
+//     if (checkCreated === 12) { //if called 12 times, all the moves have been created so add them.
 		
-		dragonite.addMove()
-		dragonite.addMove()
-		dragonite.addMove()
-		dragonite.addMove()
-
-		porygonZ.addMove()
-		porygonZ.addMove()
-		porygonZ.addMove()
-		porygonZ.addMove()
-
-		scrafty.addMove()
-		scrafty.addMove()
-		scrafty.addMove()
-		scrafty.addMove()
-    }
-}
+		
+//     }
+// }
 
 
 function main() {
-	dragonite.getRandomMove()
-	dragonite.getRandomMove()
-	dragonite.getRandomMove()
-	dragonite.getRandomMove()
+	// dragonite.getRandomMove()
+	// dragonite.getRandomMove()
+	// dragonite.getRandomMove()
+	// dragonite.getRandomMove()
 
-	porygonZ.getRandomMove()
-	porygonZ.getRandomMove()
-	porygonZ.getRandomMove()
-	porygonZ.getRandomMove()
+	// porygonZ.getRandomMove()
+	// porygonZ.getRandomMove()
+	// porygonZ.getRandomMove()
+	// porygonZ.getRandomMove()
 
-	scrafty.getRandomMove()
-	scrafty.getRandomMove()
-	scrafty.getRandomMove()
-	scrafty.getRandomMove()
+	// scrafty.getRandomMove()
+	// scrafty.getRandomMove()
+	// scrafty.getRandomMove()
+	// scrafty.getRandomMove()
+	dragonite.addMove()
+	dragonite.addMove()
+	dragonite.addMove()
+	dragonite.addMove()
+
+	porygonZ.addMove()
+	porygonZ.addMove()
+	porygonZ.addMove()
+	porygonZ.addMove()
+
+	scrafty.addMove()
+	scrafty.addMove()
+	scrafty.addMove()
+	scrafty.addMove()
 
     let title = document.querySelector("#random-title")
 
@@ -292,7 +304,7 @@ function main() {
     grabAll = sause.all() //shows functionality of all method
 
     let secondDragonite = sause.get("Dragonite") //showing functionality of get method
-    console.log(secondDragonite)
+    // console.log(secondDragonite)
 
     // pokemonOneInfo.innerHTML = `<u>${sause.get(dragonite).name}</u> <br/>
     // 				<u>HP</u>: ${sause.get(dragonite).hp} <br/>
@@ -327,8 +339,9 @@ function main() {
 								<u>Abilities</u>: <br/> ${sause.pokemon[i].abilities[0]} <br/> ${sause.pokemon[i].abilities[1]} <br/>
 								`
 								console.log(sause.pokemon[i].moves)
-            for (let j = 0; j < sause.pokemon[i].moves.length; j++) {
-
+								console.log(sause.pokemon[i].moves[0].name)//
+            for (let j in sause.pokemon[i].moves) { //didnt work with a for loop but for in did ??????
+            	console.log(sause.pokemon[i].moves[j].name)
                 pokemonOneBonus.innerHTML = `
 							<u>${sause.pokemon[i].moves[j].name}: </u> <br/>
 							<u>Priority: </u> ${sause.pokemon[i].moves[j].priority} <br/>
@@ -346,7 +359,7 @@ function main() {
 								<u>Defense</u>: ${sause.pokemon[i].defense} <br/>
 								<u>Abilities</u>: <br/> ${sause.pokemon[i].abilities[0]} <br/> ${sause.pokemon[i].abilities[1]} <br/>
 								`
-            for (let j = 0; j < sause.pokemon[i].move.length; j++) {
+            for (let j in sause.pokemon[i].moves) {
 
                 pokemonTwoBonus.innerHTML = `
 							<u>${sause.pokemon[i].moves[j].name}: </u> <br/>
@@ -365,7 +378,7 @@ function main() {
 								<u>Defense</u>: ${sause.pokemon[i].defense} <br/>
 								<u>Abilities</u>: <br/> ${sause.pokemon[i].abilities[0]} <br/> ${sause.pokemon[i].abilities[1]} <br/>
 								`
-            for (let j = 0; j < sause.pokemon[i].move.length; j++) {
+            for (let j in sause.pokemon[i].moves) {
 
                 pokemonThreeBonus.innerHTML = `
 							<u>${sause.pokemon[i].move[j].name}: </u> <br/>
