@@ -96,7 +96,7 @@ class Sause {
         // return pokemon retrieved from trainer
         for (let i = 0; i < this.pokemon.length; i++) {
             if (pokemon === this.pokemon[i].name) {
-                return pokemon[i]
+                return this.pokemon[i]
             }
         }
 
@@ -124,6 +124,7 @@ function checkCreated() {
 
 function checkCreatedMoves() {
     if (checkCreated === 12) { //if called 12 times, all the moves have been created so add them.
+		
 		dragonite.addMove()
 		dragonite.addMove()
 		dragonite.addMove()
@@ -288,7 +289,10 @@ function main() {
 
     let sause = new Sause(party)
 
-    grabAll = sause.all()
+    grabAll = sause.all() //shows functionality of all method
+
+    let secondDragonite = sause.get("Dragonite") //showing functionality of get method
+    console.log(secondDragonite)
 
     // pokemonOneInfo.innerHTML = `<u>${sause.get(dragonite).name}</u> <br/>
     // 				<u>HP</u>: ${sause.get(dragonite).hp} <br/>
