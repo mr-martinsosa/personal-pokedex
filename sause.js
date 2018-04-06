@@ -48,7 +48,7 @@ class Pokemon {
         			// console.log(urls[Math.floor(Math.random() * Math.floor(urls.length))])
         			randomMove.push(urls[Math.floor(Math.random() * Math.floor(urls.length))])
         		}
-        		urls.length = 0
+        		
                 
                 checkCreated()
             }) //call checkCreated() on new object call
@@ -71,7 +71,10 @@ class Pokemon {
 		    axios.get(grabRandom)
 		        .then((response) => {
 		            let info = response.data
+		            urls.length = 0
 
+		            checkMoves++
+		            console.log(checkMoves)
 		            let move = new Moves(info.names[2].name, info.priority, info.power, info.accuracy, info.pp)
 		            if(this.moves.length === 0){ //if moves list is empty push
 		            		this.moves.push(move)
@@ -80,7 +83,9 @@ class Pokemon {
 		            	// console.log(this.moves[i].name)
 			                if (this.moves[i].name === info.names[2].name) { //if move already exists, remove the move
 			                    if(randomIndex !== -1){
+			                    	console.log(urls)
 			                    	urls.splice(randomIndex, 1) //splice the list based on index and return it without the move
+			                    	console.log(urls)
 			                    }
 			                } else if (this.moves.length < 4) {
 			                    // addMove(pokemon) //otherwise call function again and let RNG give us a new 
@@ -88,6 +93,7 @@ class Pokemon {
 			                }
 		            }
 		            // console.log(this)
+		            checkCreatedMoves()
 		        })
 	}
 }
@@ -129,19 +135,39 @@ let pokemonThreeShiny = document.getElementById("pokemon-3-shiny")
 
 function checkCreated() {
     if (check === 3) { //if called 3 times, all the pokemon have been created so do main
-        main()
+        createMove()
     }
 }
 
-// function checkCreatedMoves() {
-//     if (checkCreated === 12) { //if called 12 times, all the moves have been created so add them.
-		
-		
-//     }
-// }
+function checkCreatedMoves() {
+    if (checkMoves === 12) { //if called 12 times, all the moves have been created so add them.
+		console.log("Loaded Moves")
 
+		setTimeout(main(), 15000)
+		
+    }
+}
+
+
+function createMove(){
+	dragonite.addMove()
+	dragonite.addMove()
+	dragonite.addMove()
+	dragonite.addMove()
+
+	porygonZ.addMove()
+	porygonZ.addMove()
+	porygonZ.addMove()
+	porygonZ.addMove()
+
+	scrafty.addMove()
+	scrafty.addMove()
+	scrafty.addMove()
+	scrafty.addMove()
+}
 
 function main() {
+	console.log("Loaded Everything")
 	// dragonite.getRandomMove()
 	// dragonite.getRandomMove()
 	// dragonite.getRandomMove()
@@ -156,20 +182,7 @@ function main() {
 	// scrafty.getRandomMove()
 	// scrafty.getRandomMove()
 	// scrafty.getRandomMove()
-	dragonite.addMove()
-	dragonite.addMove()
-	dragonite.addMove()
-	dragonite.addMove()
-
-	porygonZ.addMove()
-	porygonZ.addMove()
-	porygonZ.addMove()
-	porygonZ.addMove()
-
-	scrafty.addMove()
-	scrafty.addMove()
-	scrafty.addMove()
-	scrafty.addMove()
+	
 
     let title = document.querySelector("#random-title")
 
@@ -304,8 +317,9 @@ function main() {
     grabAll = sause.all() //shows functionality of all method
 
     let secondDragonite = sause.get("Dragonite") //showing functionality of get method
-    // console.log(secondDragonite)
+    //console.log(secondDragonite)
 
+    console.log(dragonite, porygonZ, scrafty)
     // pokemonOneInfo.innerHTML = `<u>${sause.get(dragonite).name}</u> <br/>
     // 				<u>HP</u>: ${sause.get(dragonite).hp} <br/>
     // 				<u>Attack</u>: ${sause.get(dragonite).attack} <br/>
@@ -338,18 +352,17 @@ function main() {
 								<u>Defense</u>: ${sause.pokemon[i].defense} <br/>
 								<u>Abilities</u>: <br/> ${sause.pokemon[i].abilities[0]} <br/> ${sause.pokemon[i].abilities[1]} <br/>
 								`
-								console.log(sause.pokemon[i].moves)
-								console.log(sause.pokemon[i].moves[0].name)//
-            for (let j in sause.pokemon[i].moves) { //didnt work with a for loop but for in did ??????
-            	console.log(sause.pokemon[i].moves[j].name)
+							
+            // for (let j in sause.pokemon[i].moves) { //didnt work with a for loop but for in did ??????
+            	// console.log(sause.pokemon[i].moves[j].name)
                 pokemonOneBonus.innerHTML = `
-							<u>${sause.pokemon[i].moves[j].name}: </u> <br/>
-							<u>Priority: </u> ${sause.pokemon[i].moves[j].priority} <br/>
-							<u>Power: </u> ${sause.pokemon[i].moves[j].power} <br/>
-							<u>Accuracy: </u> ${sause.pokemon[i].moves[j].accuracy} <br/>
-							<u>PP: </u> ${sause.pokemon[i].moves[j].pp} <br/>
+							<u>${sause.pokemon[i].moves[0].name}: </u> <br/>
+							<u>Priority: </u> ${sause.pokemon[i].moves[0].priority} <br/>
+							<u>Power: </u> ${sause.pokemon[i].moves[0].power} <br/>
+							<u>Accuracy: </u> ${sause.pokemon[i].moves[0].accuracy} <br/>
+							<u>PP: </u> ${sause.pokemon[i].moves[0].pp} <br/>
 							`
-            }
+            // }
         }
         else if (i === 1) {
             pokemonTwoInfo.innerHTML = `
@@ -363,10 +376,10 @@ function main() {
 
                 pokemonTwoBonus.innerHTML = `
 							<u>${sause.pokemon[i].moves[j].name}: </u> <br/>
-							<u>Priority: </u> ${sause.pokemon[i].moves[j].priority} <br/>
-							<u>Power: </u> ${sause.pokemon[i].moves[j].power} <br/>
-							<u>Accuracy: </u> ${sause.pokemon[i].moves[j].accuracy} <br/>
-							<u>PP: </u> ${sause.pokemon[i].moves[j].pp} <br/>
+							<u>Priority: </u> ${sause.pokemon[i].moves[0].priority} <br/>
+							<u>Power: </u> ${sause.pokemon[i].moves[0].power} <br/>
+							<u>Accuracy: </u> ${sause.pokemon[i].moves[0].accuracy} <br/>
+							<u>PP: </u> ${sause.pokemon[i].moves[0].pp} <br/>
 								`
             }
         }
@@ -379,13 +392,13 @@ function main() {
 								<u>Abilities</u>: <br/> ${sause.pokemon[i].abilities[0]} <br/> ${sause.pokemon[i].abilities[1]} <br/>
 								`
             for (let j in sause.pokemon[i].moves) {
-
+            	console.log(sause.pokemon[i])
                 pokemonThreeBonus.innerHTML = `
-							<u>${sause.pokemon[i].move[j].name}: </u> <br/>
-							<u>Priority: </u>${sause.pokemon[i].moves[j].priority} <br/>
-							<u>Power: </u>${sause.pokemon[i].moves[j].power} <br/>
-							<u>Accuracy: </u>${sause.pokemon[i].moves[j].accuracy} <br/>
-							<u>PP: </u>${sause.pokemon[i].moves[j].pp} <br/>
+							<u>${sause.pokemon[i].move[0].name}: </u> <br/>
+							<u>Priority: </u>${sause.pokemon[i].moves[0].priority} <br/>
+							<u>Power: </u>${sause.pokemon[i].moves[0].power} <br/>
+							<u>Accuracy: </u>${sause.pokemon[i].moves[0].accuracy} <br/>
+							<u>PP: </u>${sause.pokemon[i].moves[0].pp} <br/>
 							`
             }
         }
