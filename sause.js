@@ -1,4 +1,18 @@
 let check = 0 //set counter for base intialization to use as a semaphore
+let checkMoves = 0 //set counter for base initialization to use as a semaphore
+let urls = [] //initialize empty list to store urls of move data
+let randomMove = "" //store a random move
+let randomIndex = Math.floor(Math.random() * Math.floor(urls.length)) //store a random number to use as an index
+
+class Moves {
+    constructor(name, priority, power, accuracy, pp) {
+        this["name"] = name
+        this["priority"] = priority
+        this["power"] = power
+        this["accuracy"] = accuracy
+        this["pp"] = pp
+    }
+}
 
 class Pokemon {
     constructor(dex_num) {
@@ -21,10 +35,50 @@ class Pokemon {
                 this["moves"] = []
                 this["shiny"] = info.sprites.front_shiny
 
+                this["randomMove"] = ""
                 checkCreated()
             }) //call checkCreated() on new object call
-    }
+        }
 
+        getRandomMove() {
+        	axios.get(`https://pokeapi.co/api/v2/pokemon/${this.dex_num}/`) 
+        		.then((response) => {
+        			checkMoves++
+        			let info = response.data
+
+        			for (let i = 0; i < info.moves.length; i++) {
+        				urls.push(info.moves[i].move.url) //push all the moves a pokemon can learn into array
+        			}
+        			this.randomMove = urls[randomIndex]
+        			checkCreatedMoves() //call after all moves are recieved
+        		})
+        	}
+
+        addMove(){
+		     //randomize move
+		    axios.get(this.randomMove)
+		        .then((response) => {
+		            let info = response.data
+
+		            let move = new Moves(info.names[2].name, info.priority, info.power, info.accuracy, info.pp)
+		            console.log(move)
+		            if(pokemon.moves.length === 0){ //if moves list is empty push
+		            		pokemon.moves.push(move)
+		            }
+		            for (let i = 0; i < this.moves.length; i++) {
+		            	if(this.moves.length > 0){
+			                if (this.moves[i].name === info.names[2].name) { //if move already exists, remove the move
+			                    if(randomIndex !== -1){
+			                    	urls.splice(randomIndex, 1) //splice the list based on index and return it without the move
+			                    }
+			                } else {
+			                    // addMove(pokemon) //otherwise call function again and let RNG give us a new 
+			                    this.moves.push(move) //otherwise push the move to the array
+			                }
+			            }
+		            }
+		        })
+	}
 }
 
 class Sause {
@@ -49,68 +103,10 @@ class Sause {
     }
 }
 
-class Moves {
-    constructor() {
-        this["name"] = ""
-        this["priority"] = ""
-        this["power"] = 0
-        this["accuracy"] = 0
-        this["pp"] = 0
-    }
-}
-
-function addMove(pokemon) {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.dex_num}/`) //
-        .then((response) => {
-            let info = response.data
-            let urls = [] //initialize empty list to store urls of move data
-            let randomIndex = Math.floor(Math.random() * Math.floor(urls.length))
-            for (let i = 0; i < info.moves.length; i++) {
-                urls.push(info.moves[i].move.url) //push all the moves a pokemon can learn into array
-            }
-        })
-
-    let randomMove = urls[randomIndex] //randomize move
-
-    axios.get(randomMove)
-        .then((response) => {
-            let info = response.data
-
-            let move = new Move(info.names[2].name, info.priority, info.power, info.accuracy, info.pp)
-
-            // if(pokemon.moves.length === 0){ //if moves list is empty push
-            // 		pokemon.moves.push(move)
-            // 	}
-            for (let i = 0; i < pokemon.moves.length; i++) {
-                if (pokemon.moves[i].name === info.names[2].name) { //if move already exists, remove the move
-                    urls.splice(randomIndex, 1) //splice the list based on index and return it without the move
-                } else {
-                    // addMove(pokemon) //otherwise call function again and let RNG give us a new 
-                    pokemon.moves.push(move) //otherwise push the move to the array
-                }
-            }
-        })
-}
 
 let dragonite = new Pokemon(149)
 let porygonZ = new Pokemon(474)
 let scrafty = new Pokemon(560)
-
-addMove(dragonite)
-addMove(dragonite)
-addMove(dragonite)
-addMove(dragonite)
-
-addMove(porygonZ)
-addMove(porygonZ)
-addMove(porygonZ)
-addMove(porygonZ)
-
-addMove(scrafty)
-addMove(scrafty)
-addMove(scrafty)
-addMove(scrafty)
-
 
 let pokemonOneImg = document.getElementById("pokemon-1-img")
 let pokemonTwoImg = document.getElementById("pokemon-2-img")
@@ -126,8 +122,41 @@ function checkCreated() {
     }
 }
 
+function checkCreatedMoves() {
+    if (checkCreated === 12) { //if called 12 times, all the moves have been created so add them.
+		dragonite.addMove()
+		dragonite.addMove()
+		dragonite.addMove()
+		dragonite.addMove()
+
+		porygonZ.addMove()
+		porygonZ.addMove()
+		porygonZ.addMove()
+		porygonZ.addMove()
+
+		scrafty.addMove()
+		scrafty.addMove()
+		scrafty.addMove()
+		scrafty.addMove()
+    }
+}
+
 
 function main() {
+	dragonite.getRandomMove()
+	dragonite.getRandomMove()
+	dragonite.getRandomMove()
+	dragonite.getRandomMove()
+
+	porygonZ.getRandomMove()
+	porygonZ.getRandomMove()
+	porygonZ.getRandomMove()
+	porygonZ.getRandomMove()
+
+	scrafty.getRandomMove()
+	scrafty.getRandomMove()
+	scrafty.getRandomMove()
+	scrafty.getRandomMove()
 
     let title = document.querySelector("#random-title")
 
@@ -159,10 +188,15 @@ function main() {
         "Lone Wolf"
     ]
 
-    title.innerText = `${listOfTitles[Math.floor(Math.random() * Math.floor(listOfTitles.length) )]} Sause
+    title.innerText = `${listOfTitles[Math.floor( Math.random() * Math.floor(listOfTitles.length) )] } Sause
+    					ID: 66666
 						Age: ${Math.floor(Math.random() * Math.floor(27) )}
 						Hometown: New York
 						Journey Started on: March 5th, 2018
+						Seen: 807
+						Caught: 807
+						Money: $${Math.floor(Math.random() * Math.floor(9999))}
+						Play Time: 730:40
 						`
 
 
@@ -193,6 +227,24 @@ function main() {
         sound.play()
     })
 
+    pokemonOneShiny.addEventListener("click", (event) => {
+        let sound = new Audio()
+        sound.src = "sound/shiny.mp3"
+        sound.play()
+    })
+
+    pokemonTwoShiny.addEventListener("click", (event) => {
+        let sound = new Audio()
+        sound.src = "sound/shiny.mp3"
+        sound.play()
+    })
+
+    pokemonThreeShiny.addEventListener("click", (event) => {
+        let sound = new Audio()
+        sound.src = "sound/shiny.mp3"
+        sound.play()
+    })
+
 
     // console.log(dragonite)
     // let pokemonInfo = document.querySelector("#pokemon-one-info")
@@ -200,9 +252,9 @@ function main() {
     let pokemonTwoInfo = document.querySelector("#pokemon-2-info")
     let pokemonThreeInfo = document.querySelector("#pokemon-3-info")
 
-    let pokemonOneBonus = document.querySelector("#pokemon-1-bonus")
-    let pokemonTwoBonus = document.querySelector("#pokemon-2-bonus")
-    let pokemonThreeBonus = document.querySelector("#pokemon-3-bonus")
+    let pokemonOneBonus = document.querySelector("#pokemon-1-detailed")
+    let pokemonTwoBonus = document.querySelector("#pokemon-2-detailed")
+    let pokemonThreeBonus = document.querySelector("#pokemon-3-detailed")
 
     // pokemonOneInfo.innerHTML = `<u>${dragonite.name}</u> <br/>
     // 				<u>HP</u>: ${dragonite.hp} <br/>
@@ -260,7 +312,8 @@ function main() {
     // 				`
 
     for (let i = 0; i < grabAll.length; i++) {
-        let pokemonInfo = document.querySelector(`#pokemon-${i+1}-info`)
+        // let pokemonInfo = document.querySelector(`#pokemon-${i+1}-info`)
+        // let pokemonBonus = document.querySelector(`#pokemon-${i+1}-bonus`)
         if (i === 0) {
             pokemonOneInfo.innerHTML = `
 							<u>${sause.pokemon[i].name}:</u> <br/>
@@ -269,18 +322,19 @@ function main() {
 								<u>Defense</u>: ${sause.pokemon[i].defense} <br/>
 								<u>Abilities</u>: <br/> ${sause.pokemon[i].abilities[0]} <br/> ${sause.pokemon[i].abilities[1]} <br/>
 								`
-            for (let j = 0; j < sause.pokemon[i].move.length; j++) {
+								console.log(sause.pokemon[i].moves)
+            for (let j = 0; j < sause.pokemon[i].moves.length; j++) {
 
                 pokemonOneBonus.innerHTML = `
-							<u>${sause.pokemon[i].move[j].name}: </u> <br/>
-							<u>Priority: </u> ${sause.pokemon[i].move[j].priority} <br/>
-							<u>Power: </u> ${sause.pokemon[i].move[j].power} <br/>
-							<u>Accuracy: </u> ${sause.pokemon[i].move[j].accuracy} <br/>
-							<u>PP: </u> ${sause.pokemon[i].move[j].pp} <br/>
+							<u>${sause.pokemon[i].moves[j].name}: </u> <br/>
+							<u>Priority: </u> ${sause.pokemon[i].moves[j].priority} <br/>
+							<u>Power: </u> ${sause.pokemon[i].moves[j].power} <br/>
+							<u>Accuracy: </u> ${sause.pokemon[i].moves[j].accuracy} <br/>
+							<u>PP: </u> ${sause.pokemon[i].moves[j].pp} <br/>
 							`
             }
         }
-        if (i === 1) {
+        else if (i === 1) {
             pokemonTwoInfo.innerHTML = `
 							<u>${sause.pokemon[i].name}:</u> <br/>
 								<u>HP</u>: ${sause.pokemon[i].hp} <br/>
@@ -291,15 +345,15 @@ function main() {
             for (let j = 0; j < sause.pokemon[i].move.length; j++) {
 
                 pokemonTwoBonus.innerHTML = `
-							<u>${sause.pokemon[i].move[j].name}: </u> <br/>
-							<u>Priority: </u> ${sause.pokemon[i].move[j].priority} <br/>
-							<u>Power: </u> ${sause.pokemon[i].move[j].power} <br/>
-							<u>Accuracy: </u> ${sause.pokemon[i].move[j].accuracy} <br/>
-							<u>PP: </u> ${sause.pokemon[i].move[j].pp} <br/>
+							<u>${sause.pokemon[i].moves[j].name}: </u> <br/>
+							<u>Priority: </u> ${sause.pokemon[i].moves[j].priority} <br/>
+							<u>Power: </u> ${sause.pokemon[i].moves[j].power} <br/>
+							<u>Accuracy: </u> ${sause.pokemon[i].moves[j].accuracy} <br/>
+							<u>PP: </u> ${sause.pokemon[i].moves[j].pp} <br/>
 								`
             }
         }
-        if (i === 2) {
+        else if (i === 2) {
             pokemonThreeInfo.innerHTML = `
 							<u>${sause.pokemon[i].name}:</u> <br/>
 								<u>HP</u>: ${sause.pokemon[i].hp} <br/>
@@ -311,12 +365,13 @@ function main() {
 
                 pokemonThreeBonus.innerHTML = `
 							<u>${sause.pokemon[i].move[j].name}: </u> <br/>
-							<u>Priority: </u>${sause.pokemon[i].move[j].priority} <br/>
-							<u>Power: </u>${sause.pokemon[i].move[j].power} <br/>
-							<u>Accuracy: </u>${sause.pokemon[i].move[j].accuracy} <br/>
-							<u>PP: </u>${sause.pokemon[i].move[j].pp} <br/>
+							<u>Priority: </u>${sause.pokemon[i].moves[j].priority} <br/>
+							<u>Power: </u>${sause.pokemon[i].moves[j].power} <br/>
+							<u>Accuracy: </u>${sause.pokemon[i].moves[j].accuracy} <br/>
+							<u>PP: </u>${sause.pokemon[i].moves[j].pp} <br/>
 							`
             }
         }
 
     }
+}

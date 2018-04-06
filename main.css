@@ -18,7 +18,8 @@ body {
 h3 {
   text-align: center;
   font-family: 'Pokemon GB', sans-serif;
-  size: 30px; }
+  size: 30px;
+  color: white; }
 
 /*#flex-container{
 	display: flex;
@@ -45,34 +46,34 @@ h3 {
 /*#pokemon-list{
 	display: flex;
 }*/
-#pokemon-one {
+#pokemon-1-info {
   /*border: solid 3px white;*/
   width: 200px;
   color: white; }
 
-#pokemon-two {
+#pokemon-2-info {
   /*border: solid 3px white;*/
   width: 200px;
   color: white; }
 
-#pokemon-three {
+#pokemon-3-info {
   /*border: solid 3px white;*/
   width: 200px;
   color: white; }
 
-#pokemon-one-img {
+#pokemon-1-img {
   cursor: pointer;
   display: block;
   margin-left: auto;
   margin-right: auto; }
 
-#pokemon-two-img {
+#pokemon-2-img {
   cursor: pointer;
   display: block;
   margin-left: auto;
   margin-right: auto; }
 
-#pokemon-three-img {
+#pokemon-3-img {
   cursor: pointer;
   display: block;
   margin-left: auto;
